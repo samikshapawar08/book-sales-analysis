@@ -200,6 +200,13 @@ You are free to use, modify, and distribute this project with proper attribution
 
 ---
 
+## 🙏 Acknowledgement
+
+This project was inspired by a YouTube tutorial.  
+The implementation has been recreated and enhanced independently for learning and portfolio purposes.
+
+---
+
 ## ⭐ Support
 
 If you found this project helpful:
