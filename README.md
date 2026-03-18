@@ -135,3 +135,75 @@ The database consists of three relational tables:
 ### 🔹 Total Revenue
 ```sql
 SELECT SUM(total_amount) AS revenue FROM Orders;
+```
+### 🔹 Most Frequently Ordered Book
+```sql
+SELECT o.book_id, b.title, COUNT(o.order_id) AS order_count
+FROM orders o
+JOIN books b ON o.book_id = b.book_id
+GROUP BY o.book_id, b.title
+ORDER BY order_count DESC
+LIMIT 1;
+```
+### 🔹 Remaining Stock After Orders
+```sql
+SELECT b.book_id, b.title, b.stock,
+COALESCE(SUM(o.quantity), 0) AS ordered_quantity,
+b.stock - COALESCE(SUM(o.quantity), 0) AS remaining_stock
+FROM books b
+LEFT JOIN orders o ON b.book_id = o.book_id
+GROUP BY b.book_id;
+```
+---
+
+### 🧠 Skills Demonstrated
+
+- Strong SQL query writing and optimization
+- Data analysis and interpretation
+- Relational database design and normalization
+- Business problem-solving using data
+- Aggregation and reporting techniques
+
+---
+
+### 📦 Tools & Technologies
+
+- PostgreSQL (Database Management System)
+- SQL (Structured Query Language)
+
+---
+
+## 🛠️ Common Issues & Fixes
+
+| Issue | Solution |
+|------|----------|
+| Tables already exist | Use `DROP TABLE IF EXISTS` before creating tables |
+| Foreign key constraint errors | Insert data in correct order (Books → Customers → Orders) |
+| NULL values in aggregations | Use `COALESCE()` to handle NULL results |
+| Incorrect query output | Verify JOIN conditions and GROUP BY clauses |
+| Date filtering issues | Ensure correct date format (`YYYY-MM-DD`) |
+
+---
+
+## 👤 Author
+
+**YSamiksha Pawar**  
+- GitHub: *https://github.com/samikshapawar08*  
+- LinkedIn: *www.linkedin.com/in/samiksha-pawar-aa1018266*  
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.  
+You are free to use, modify, and distribute this project with proper attribution.
+
+---
+
+## ⭐ Support
+
+If you found this project helpful:
+
+- ⭐ Star this repository  
+- 🍴 Fork it for your own use  
+- 📢 Share it with others  
